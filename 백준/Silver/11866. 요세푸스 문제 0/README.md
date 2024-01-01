@@ -1,4 +1,4 @@
-# [Silver V] 요세푸스 문제 0 - 11866 
+# [Silver V] 요세푸스 문제 0 - 11866 (삽질한 문제)
 
 [문제 링크](https://www.acmicpc.net/problem/11866) 
 
