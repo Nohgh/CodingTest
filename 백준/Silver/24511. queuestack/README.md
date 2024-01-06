@@ -2,6 +2,60 @@
 
 [문제 링크](https://www.acmicpc.net/problem/24511) 
 
+## 해당 문제 시간복잡도 고려하지 않은 코드 O(N^2)
+
+```python
+import sys
+input = sys.stdin.readline
+
+n=int(input()) #줄 1
+q_or_s=list(map(int,input().split())) #줄 2
+qs=list(map(int,input().split())) #줄 3
+m=int(input()) #줄 4
+push_item=list(map(int,input().split())) #줄 5
+
+for x in push_item:
+   for y in range(n):
+      if q_or_s[y]==0: #큐
+         z=qs[y] #기존값을 임시로 저장
+         qs[y]=x #큐 내부를 대입값으로 교체
+         x=z # 대입값을 임시로 저장한 기존값으로 설정
+   print(x,end=' ')
+```
+
+## 시간복잡도 O(N)으로 동작하게 만든 후 코드
+
+```python
+import sys
+input = sys.stdin.readline
+from collections import deque
+
+n=int(input()) #줄 1
+q_or_s=list(map(int,input().split())) #줄 2
+qs=list(map(int,input().split())) #줄 3
+m=int(input()) #줄 4
+push_item=list(map(int,input().split())) #줄 5
+q=deque()
+cnt=0
+rst=deque()
+for x in reversed(range(n)):
+    if q_or_s[x]==0:
+        q.append(qs[x])
+        cnt+=1
+        if(cnt==m):
+            break
+for x in push_item:
+    if(cnt==m):
+        break
+    q.append(x)
+    cnt+=1
+    
+print(*q)
+
+```
+### 시간복잡도에 맞게 구조설계를 다시하고 적용했을때 다른 분들이 python으로 제출한 코드보다 최적의 시간으로 문제를 해결함 (기분좋았음..ㅎ)
+---
+
 ### 성능 요약
 
 메모리: 48888 KB, 시간: 188 ms
