@@ -28,3 +28,37 @@
 
  <p>총 N개의 수 NGE(1), NGE(2), ..., NGE(N)을 공백으로 구분해 출력한다.</p>
 
+### O(N**2)코드
+```python
+import sys
+input=sys.stdin.readline
+n=int(input())
+a=list(map(int,input().split()))
+
+s=[]
+rst=[]
+sysout=[]
+for x in range(len(a)):
+    rst.append(a[x])
+    for z in range(x+1,len(a)):
+        if a[x] <= a[z]:
+            rst.append(a[z])
+    
+    if(len(rst)==1):
+        sysout.append(-1)
+    else:
+        while(len(rst)!=2):
+            rst.pop()
+        sysout.append(rst.pop())
+    rst.clear()
+print(sysout)
+'''데이터 100만, 1초 o(n)으로 풀어야함 '''
+
+```
+
+
+### O(N)코드
+- 해결방법: for문으로 순회를 하며 x를 인덱스로 만들고 인덱스를 저장할 스택을 하나 생성
+- 스택 내의 인덱스는 전 인덱스라고 생각하면 되고 a[x]가 현재 인덱스의 값 따라서 a[stack[-1]과 a[x]를 비교
+- 스택에서 pop한 원소인 인덱스를 다음 값으로 주면 오큰수를 계산할 수 있음
+### 포인트: 순회를 for문을 이용해 높은 시간복잡도를 스택을 이용하여 한번의 순회로 모든값을 비교할 수 있다.
