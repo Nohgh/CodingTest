@@ -5,7 +5,6 @@ This is a auto push repository for Baekjoon Online Judge created with [BaekjoonH
 
 ---
 
-### 🔥1일 1문제 이상 풀기
 ### 🔥구현하기 전에 반례 충분히 생각해보기 + 항상 시간복잡도 고려하기
 ### 🔥노션에 정리 잘하기
 ---
